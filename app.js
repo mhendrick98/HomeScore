@@ -53,7 +53,7 @@ app.post("/post/sendAddressInfo", function(req,res){
       //console.log("Hubway params are " + hubwayParameters.location);
       hubwaySearch.placeSearch(hubwayParameters, function (error, response) {
         if (error) {
-          break; // no results found
+          return; // no results found
           //assert.notEqual(response.results.length, 0, "Place search must not return 0 results");
         }
         else{
@@ -81,7 +81,7 @@ app.post("/post/sendAddressInfo", function(req,res){
 
     transitSearch.placeSearch(transitParameters, function (error, response) {
       if (error) {
-        break; // no results found
+        return; // no results found
         //assert.notEqual(response.results.length, 0, "Place search must not return 0 results");
       }
       else{
@@ -106,7 +106,7 @@ app.post("/post/sendAddressInfo", function(req,res){
 
     hospitalSearch.placeSearch(hospitalParameters, function (error, response) {
       if (error) {
-        break; // no results found
+        return; // no results found
         //assert.notEqual(response.results.length, 0, "Place search must not return 0 results");
       }
       else{
@@ -131,7 +131,7 @@ app.post("/post/sendAddressInfo", function(req,res){
     };
     gymSearch.placeSearch(gymParameters, function (error, response) {
       if (error) {
-        break; // no results found
+        return; // no results found
         //assert.notEqual(response.results.length, 0, "Place search must not return 0 results");
       }
       else{
@@ -157,7 +157,7 @@ app.post("/post/sendAddressInfo", function(req,res){
     };
     schoolSearch.placeSearch(schoolParameters, function (error, response) {
       if (error) {
-        break; // no results found
+        return; // no results found
         //assert.notEqual(response.results.length, 0, "Place search must not return 0 results");
       }
       else{
