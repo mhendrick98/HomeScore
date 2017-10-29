@@ -2,3 +2,54 @@
   text-align:center;
   height:100vh;
 }
+
+body{
+  background-color: #7ecaef
+}
+
+h3{
+  text-align: center;
+  color: red;
+}
+
+img{
+  width: 40px;
+  height: auto;
+}
+
+h4{
+   text-align: center;
+   color: black;
+ }
+
+h5{
+  text-align: center;
+  color: black;
+  font-size: 40px;
+}
+
+h2{
+  text-align: left;
+  color: black;
+  font-size: 23px;
+}
+
+h6{
+  text-align: center;
+  color: #527b54;
+  font-size: 18px;
+}
+
+h7{
+  text-align: center;
+  color: black;
+  font-size: 10px;
+}
+h8{
+  text-align: center;
+  color: #527b54;
+  font-size: 28px;
+  margin: auto;
+  width: 50%;
+  padding: 10px;
+}

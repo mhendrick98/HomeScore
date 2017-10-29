@@ -24,39 +24,69 @@
         <p class="lead">Fill out the form below to get started.</p>
         <form ng-submit="submit()" class="form-inline">
         <div class="form-group">
-          <input type="text" class="form-control input-group" ng-model="address" name="address" placeholder="Enter your address here (House number, Street, City, State, Zip-code)" size="90%"/>
+          <input type="text" class="form-control input-group" ng-model="address" name="address" placeholder="Enter your address here (House number Street City State)" size="90%"/>
         </div>
 
       <div class="form-group">
         <input type="submit" class="btn btn-primary btn-md" value="Submit">
       </div>
     </form>
+        <div>
+          <h6> Powered by Liberty Mutual Data   <img src="https://images.contentful.com/r6ek15msiuv1/2O3qSSB9tSIm2w8yYCgyk2/cafba0690104c23a00fa53490819aee2/liberty-mutual-1.png">
+          </h6>
+        </div>
   </div>
-
+      <h5> Your SuperScore value is 1000 </br> <h8> Find Your Score Report Below!</h8></h5>
       <div id="report"> <!--ng-if="showReport" !-->
         <div class="row">
           <div class="col-md-6">
-            <h4> Your Home's noise pollution score is  {{ quietValue }} /100</h2>
-            <h4> Your Home's safety score is {{ safetyValue }} / 100</h2>
+            <h3> </br> Population and Noise Raw Scores </h3>
+            <h4> </br> Your Home's noise pollution score is  {{ quietValue }} /100</h4>
+            <h4> Your Home's safety score is {{ safetyValue }} / 100 </h4>
           </div>
           <div class="col-md-6">
-            <h3> Additional Concerns </h3>
+            <h3> </br> Additional Concerns </h3>
             <div ng-repeat="concern in noiseReport">
-              <h4> {{ concern }} </h4>
+              <h2> </br> &#8226; {{ concern }} </h2>
             </div>
             <div ng-repeat="concern in safetyReport">
-              <h4> {{ concern }} </h4>
+              <h2> &#8226; {{ concern }} </h2>
             </div>
           </div>
+        </div>
     </div>
     <div class="row">
       <div class="col-md-6">
-        <h3> Hubway Stations </h3>
+        <h3> </br> Local Hubway Stations </h3>
         <div ng-repeat="station in hubwayStations">
           <h4> {{ station }} </h4>
         </div>
+        </div>
+      <div class="col-md-6">
+        <h3> </br> Surrounding Transit Stations</h3>
+        <div ng-repeat="station in transitStations">
+          <h4> {{ station }} </h4>
+        </div>
       </div>
-      
+      <div class="col-md-6">
+        <h3> </br>  Nearby Hospitals </h3>
+        <div ng-repeat="hospital in hospitals">
+          <h4> {{ hospital }} </h4>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <h3> </br> Nearby Schools </h3>
+        <div ng-repeat="school in schools" ng-if="$odd">
+          <h4> {{ school }} </h4>
+        </div>
+      </div>
+      </div>
+    </div>
+  <div>
+    <h7> </br> Created by Michael Hendrick and Manuja DeSilva at BostonHacks Fall 2017. </br> This project uses the Liberty
+      Mutual Shine API as well as the Google Maps/Places APi. </br> Find us on GitHub @mdesilva and @mhendrick98.
+    </h7>
+  </div>
   </body>
         <!-- Bootstrap core JavaScript
     ================================================== -->

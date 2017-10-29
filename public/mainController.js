@@ -15,7 +15,7 @@ angular.module('myApp',[]).controller('main',['$scope','$http', function($scope,
       $scope.noiseReport = result.noiseReport;
       $scope.safetyReport = result.safetyReport;
       $scope.hubwayStations = result.hubwayStations;
-      $scope.transitStations = result.trainStations;
+      $scope.transitStations = result.transitStations;
       $scope.hospitals = result.hospitals;
       $scope.schools = result.schools;
       $scope.superScore = result.superScore;
