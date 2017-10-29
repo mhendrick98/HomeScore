@@ -202,6 +202,7 @@ app.post("/post/sendAddressInfo", function(req,res){
   var finalResponse = {};
   var safetyReport = []; //push all incidences of safety concerns into safetyReport;
   var noiseReport = []; //push all incidences of quietFactors into noiseReport array;
+  var rating;
   request(options, function(err,response,body){
     var result = JSON.parse(body);
 
@@ -229,6 +230,16 @@ app.post("/post/sendAddressInfo", function(req,res){
       superScore -= 5;
       safetyReport.push("There have been reports of above average speeding in this area");
     }
+
+    if(superScore > 0 && superScore <=30 ){
+      rating = "That's OK ! You live in neighborhood that is below the city average for quality of life";
+    }
+    if(superScore > 30 && superScore <=55){
+      rating = "Good ! You live in a neighborhood that has average quality of life";
+    }
+    if(superScore > 55){
+      rating = "Great ! You live in a neighborhood with a high quality of life according to city data";
+    }
     finalResponse.noiseReport = noiseReport;
     finalResponse.safetyReport = safetyReport;
 
@@ -237,6 +248,7 @@ app.post("/post/sendAddressInfo", function(req,res){
     finalResponse.hospitals = hospitalAnswer;
     finalResponse.schools = schoolAnswer;
     finalResponse.superScore = superScore;
+    finalResponse.rating = rating;
     res.json(finalResponse);
   })
 });

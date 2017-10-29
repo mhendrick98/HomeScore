@@ -20,9 +20,7 @@ angular.module('myApp',[]).controller('main',['$scope','$http', function($scope,
       $scope.hospitals = result.hospitals;
       $scope.schools = result.schools;
       $scope.superScore = result.superScore;
-      if($scope.schools === []){
-
-      }
+      $scope.rating = result.rating;
       document.getElementById('superScore').scrollIntoView();
     })
   };
