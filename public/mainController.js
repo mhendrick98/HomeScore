@@ -5,6 +5,8 @@ angular.module('myApp',[]).controller('main',['$scope','$http', function($scope,
     var addressInfo = {
       rawAddressString: $scope.address
     };
+    $scope.addressQuery = addressInfo.rawAddressString;
+    $scope.address = ""; //reset input field
     $http.post("post/sendAddressInfo",addressInfo).then(function(response){
       $scope.showReport = true;
       var result = response.data;
@@ -18,6 +20,9 @@ angular.module('myApp',[]).controller('main',['$scope','$http', function($scope,
       $scope.hospitals = result.hospitals;
       $scope.schools = result.schools;
       $scope.superScore = result.superScore;
+      if($scope.schools === []){
+
+      }
       document.getElementById('superScore').scrollIntoView();
     })
   };

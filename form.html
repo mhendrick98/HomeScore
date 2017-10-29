@@ -36,13 +36,13 @@
           </h6>
         </div>
   </div>
-      <h5 id = "superScore"> Your SuperScore value is {{ superScore }} /100 </br> <h8> Find Your Score Report Below!</h8></h5>
+      <h5 id = "superScore"> Your SuperScore value for {{ addressQuery }} </br> is {{ superScore }} /100 </br> <h8> Find Your Score Report Below!</h8></h5>
       <div id="report"> <!--ng-if="showReport" !-->
         <div class="row">
           <div class="col-md-6">
             <h3> </br> Population and Noise Raw Scores </h3>
             <h4> </br> Your Home's noise pollution score is  {{ quietValue }} /100</h4>
-            <h9> This score indicates how loud or quite the surrounding neighborhood is. The lower the value the better.</h9>
+            <h9> This score indicates how loud or quiet the surrounding neighborhood is due to noise pollution factors such as highways, large railways, and primary roadways. The lower the value the better.</h9>
             <h4> Your Home's safety score is {{ safetyValue }} / 100 </h4>
             <h9> This score indicates how safe surrounding neighborhood are for children and families. The higher the value the better.</h9>
           </div>
@@ -63,6 +63,7 @@
         <h9> Nearby Hubway Stations promote sustainability and an active lifestyle, two things known to improve overall quality of life.</h9>
         <div ng-repeat="station in hubwayStations">
           <h4> {{ station }} </h4>
+          <h4 ng-if="hubwayStations === []"> No bike sharing stations found. Please try again </h4>
         </div>
         </div>
       <div class="col-md-6">
@@ -70,6 +71,7 @@
         <h9> Ease of access to public transportation allows residents to save money on gas and other vehicle fees.</h9>
         <div ng-repeat="station in transitStations">
           <h4> {{ station }} </h4>
+          <h4 ng-if="transitStations === []"> No nearby transit stations found. Please try again </h4>
         </div>
       </div>
       <div class="col-md-6">
@@ -77,13 +79,15 @@
         <h9> Local hospitals give residents a sense of security and trust in their community.</h9>
         <div ng-repeat="hospital in hospitals">
           <h4> {{ hospital }} </h4>
+          <h4 ng-if="hospitals === []"> No nearby hospitals found. Please try again</h4>
         </div>
       </div>
       <div class="col-md-6">
         <h3> </br> Nearby Schools </h3>
-        <h9> Living near schools is a great amenity for young families.</h9>
+        <h9> Living near schools with higher rankings boosts neighborhood scores. </h9>
         <div ng-repeat="school in schools" ng-if="$odd">
           <h4> {{ school }} </h4>
+          <h4 ng-if="schools === []"> No nearby schools found. Please try again </h4>
         </div>
       </div>
       </div>
