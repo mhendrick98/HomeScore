@@ -31,7 +31,7 @@ app.post("/post/sendAddressInfo", function(req,res){
   var hospitalAnswer = [];
   var schoolAnswer = [];
   var googleMapsClient = require('@google/maps').createClient({
-    key: 'AIzaSyBKfiM9qa6Rsf455Bqp6pZCmyyXB-R64lY'
+    key: 'AIzaSyCAnengb3KwPesSKMd7BY5WZFQvXxBIRfc'
   });
 
   googleMapsClient.geocode({
@@ -66,7 +66,7 @@ app.post("/post/sendAddressInfo", function(req,res){
                   continue;
           }
           superScore += 5;
-          //console.log("Hubway stations within a " + hubwayParameters.radius + "\n" + hubwayAnswer);
+          console.log("Hubway stations within a " + hubwayParameters.radius + "\n" + hubwayAnswer);
         }
 
       });
@@ -92,6 +92,7 @@ app.post("/post/sendAddressInfo", function(req,res){
                   transitAnswer.push(response.results[i].name);
           }
           superScore += 10;
+          console.log("Transit stops are");
           console.log(transitAnswer);
         }
       });
@@ -118,7 +119,8 @@ app.post("/post/sendAddressInfo", function(req,res){
                   hospitalAnswer.push(response.results[i].name);
           }
           superScore += 10;
-          //console.log(hospitalAnswer);
+          console.log("Hospitals are ");
+          console.log(hospitalAnswer);
         }
 
     });
@@ -143,7 +145,8 @@ app.post("/post/sendAddressInfo", function(req,res){
                   gymAnswer.push(response.results[i].name);
           }
           superScore += 5;
-          //console.log(gymAnswer);
+          console.log("Gyms are");
+          console.log(gymAnswer);
         }
 
     });
@@ -168,7 +171,8 @@ app.post("/post/sendAddressInfo", function(req,res){
                   schoolAnswer.push(response.results[i].rating, response.results[i].name);
           }
           superScore += 15;
-          //console.log(schoolAnswer);
+          console.log("Schools are ");
+          console.log(schoolAnswer);
         }
 
     });
@@ -233,7 +237,6 @@ app.post("/post/sendAddressInfo", function(req,res){
     finalResponse.hospitals = hospitalAnswer;
     finalResponse.schools = schoolAnswer;
     finalResponse.superScore = superScore;
-    console.log("Super score finally is " + superScore);
     res.json(finalResponse);
   })
 });
