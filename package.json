@@ -2,10 +2,31 @@
   "name": "home_score",
   "version": "1.0.0",
   "description": "Get information about the neighborhood home is located in",
-  "main": "homeScore.js",
+  "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node app.js"
+  },
+  "engines": {
+    "npm": "4.1.2",
+    "node": "7.7.3"
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "express": "^4.16.2",
+    "googleplaces": "^0.6.1",
+    "request": "^2.83.0",
+    "request-promise": "^4.2.2"
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mhendrick98/HomeScore.git"
+  },
+  "keywords": [],
+  "bugs": {
+    "url": "https://github.com/mhendrick98/HomeScore/issues"
+  },
+  "homepage": "https://github.com/mhendrick98/HomeScore#readme"
 }

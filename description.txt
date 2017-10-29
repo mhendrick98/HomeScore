@@ -1,1 +1,27 @@
-We got the safety scores, noise pollution factors, quiet scores, relative disturbance of major roadways, traffic violations in that area, cycling and pedestrian walkways accessibility, and other vital stats from the API to build our neighborhood overview report to outline the quality of life in a specific area. 
+We got the safety scores, noise pollution factors, quiet scores, relative disturbance of major roadways, traffic violations in that area, cycling and pedestrian walkways accessibility, and other vital stats from the API to build our neighborhood overview report to outline the quality of life in a specific area.
+
+## Inspiration
+
+## What it does
+
+This app uses the Liberty Mutual Total Home Score API & Google Maps API to to build our neighborhood overview report to outline the quality of life in a specific area using the safety scores, noise pollution factors, quiet scores, relative disturbance of major roadways, traffic violations in that area, cycling and pedestrian walkways accessibility, proximity to public transportation, and access to bike-sharing stations, hospitals, gyms, and highly ranked schools within that area.
+
+## How we built it
+
+We built this app using Node.js to handle the requests and do all of our data processing server-side. We used angular.js on the front end to process the users input and correctly parse the response from the server whilst simultaneously updating the page.
+
+## Challenges we ran into
+
+The biggest challenge we ran into was learning how to use the Google Maps API, as it had a steep learning curve when first getting familiar with it. We also had to learn how to use the requests module in node, which was what used by Liberty Mutual's Total Home Score API.
+
+## Accomplishments that we're proud of
+
+We are proud of being able to gather and incorporate many points of data vital to the quality of life in a neighborhood, and assemble a wholesome report based on all those factors, which was difficult at first.
+
+## What we learned
+
+We got better at writing efficient solutions in node.js. We learned how to carefully peruse documentation for APIs, and most importantly, we learned how to incorporate data from an API into our app, which is something we had never done before.
+
+## What's next for Better Neighborhoods
+
+Present the user with comparisons to other nearby neighborhoods, and even recommend other neighborhoods based on what amenities are important to them

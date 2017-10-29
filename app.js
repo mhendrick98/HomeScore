@@ -6,7 +6,7 @@ var assert = require("assert");
 var PlaceSearch = require("googleplaces");
 var config = require("./config.js");
 
-app.listen(3000); //listen on port 3000
+app.listen(process.env.PORT || 3000); //listen on port 3000
 app.use("/public",express.static("public"))
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
