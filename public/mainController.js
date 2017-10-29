@@ -5,7 +5,6 @@ angular.module('myApp',[]).controller('main',['$scope','$http', function($scope,
     var addressInfo = {
       rawAddressString: $scope.address
     };
-
     $http.post("post/sendAddressInfo",addressInfo).then(function(response){
       $scope.showReport = true;
       var result = response.data;
@@ -19,7 +18,7 @@ angular.module('myApp',[]).controller('main',['$scope','$http', function($scope,
       $scope.hospitals = result.hospitals;
       $scope.schools = result.schools;
       $scope.superScore = result.superScore;
+      document.getElementById('superScore').scrollIntoView();
     })
-
   };
 }])

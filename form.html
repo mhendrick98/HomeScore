@@ -24,7 +24,7 @@
         <p class="lead">Fill out the form below to get started.</p>
         <form ng-submit="submit()" class="form-inline">
         <div class="form-group">
-          <input type="text" class="form-control input-group" ng-model="address" name="address" placeholder="Enter your address here (House number Street City State)" size="90%" required/>
+          <input type="text" class="form-control input-group" ng-model="address" name="address" placeholder="Enter your address here. Must be a Boston MA address. Please do not use commas." size="90%" required/>
         </div>
 
       <div class="form-group">
@@ -36,13 +36,15 @@
           </h6>
         </div>
   </div>
-      <h5> Your SuperScore value is {{ superScore }} /100 </br> <h8> Find Your Score Report Below!</h8></h5>
+      <h5 id = "superScore"> Your SuperScore value is {{ superScore }} /100 </br> <h8> Find Your Score Report Below!</h8></h5>
       <div id="report"> <!--ng-if="showReport" !-->
         <div class="row">
           <div class="col-md-6">
             <h3> </br> Population and Noise Raw Scores </h3>
             <h4> </br> Your Home's noise pollution score is  {{ quietValue }} /100</h4>
+            <h9> This score indicates how loud or quite the surrounding neighborhood is. The lower the value the better.</h9>
             <h4> Your Home's safety score is {{ safetyValue }} / 100 </h4>
+            <h9> This score indicates how safe surrounding neighborhood are for children and families. The higher the value the better.</h9>
           </div>
           <div class="col-md-6">
             <h3> </br> Additional Concerns </h3>
@@ -58,24 +60,28 @@
     <div class="row">
       <div class="col-md-6">
         <h3> </br> Local Hubway Stations </h3>
+        <h9> Nearby Hubway Stations promote sustainability and an active lifestyle, two things known to improve overall quality of life.</h9>
         <div ng-repeat="station in hubwayStations">
           <h4> {{ station }} </h4>
         </div>
         </div>
       <div class="col-md-6">
         <h3> </br> Surrounding Transit Stations</h3>
+        <h9> Ease of access to public transportation allows residents to save money on gas and other vehicle fees.</h9>
         <div ng-repeat="station in transitStations">
           <h4> {{ station }} </h4>
         </div>
       </div>
       <div class="col-md-6">
         <h3> </br>  Nearby Hospitals </h3>
+        <h9> Local hospitals give residents a sense of security and trust in their community.</h9>
         <div ng-repeat="hospital in hospitals">
           <h4> {{ hospital }} </h4>
         </div>
       </div>
       <div class="col-md-6">
         <h3> </br> Nearby Schools </h3>
+        <h9> Living near schools is a great amenity for young families.</h9>
         <div ng-repeat="school in schools" ng-if="$odd">
           <h4> {{ school }} </h4>
         </div>
@@ -83,7 +89,7 @@
       </div>
     </div>
   <div>
-    <h7> </br> Created by Michael Hendrick and Manuja DeSilva at BostonHacks Fall 2017. </br> This project uses the Liberty
+    <h7> </br> Created by Manuja DeSilva and Michael Hendrick at BostonHacks Fall 2017. </br> This project uses the Liberty
       Mutual Shine API as well as the Google Maps/Places APi. </br> Find us on GitHub @mdesilva and @mhendrick98.
     </h7>
   </div>
