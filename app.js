@@ -23,6 +23,7 @@ app.get("/dev", function(req,res){
 
 app.post("/post/sendAddressInfo", function(req,res){
   var rawAddressString = req.body.rawAddressString;
+  var superScore = 0;
   var latitude;
   var longitude;
   var hubwayAnswer = [];
@@ -47,39 +48,52 @@ app.post("/post/sendAddressInfo", function(req,res){
       var hubwayParameters = {
         location: [latitude, longitude],
         keyword: "hubway",
-        radius: "1600"
+        radius: "800"
       };
       //console.log("Hubway params are " + hubwayParameters.location);
       hubwaySearch.placeSearch(hubwayParameters, function (error, response) {
-        if (error) throw error;
-        assert.notEqual(response.results.length, 0, "Place search must not return 0 results");
-        var i;
-        for(i = 0; i < response.results.length; i++)
-        {
-            if (!hubwayAnswer.includes(response.results[i].name))
-                hubwayAnswer.push(response.results[i].name);
+        if (error) {
+          break; // no results found
+          //assert.notEqual(response.results.length, 0, "Place search must not return 0 results");
         }
-        //console.log(hubwayAnswer);
+        else{
+          var i;
+          for(i = 0; i < response.results.length; i++)
+          {
+              if (!hubwayAnswer.includes(response.results[i].name))
+                  hubwayAnswer.push(response.results[i].name);
+              if(response.results[i].name === "Hubway" || response.results[i].name === "Hubway Station" || response.results[i].name === "Hubway Bike Stand"  || response.results[i].anme === "Bike share hubway")
+                  continue;
+          }
+          superScore += 5;
+          //console.log("Hubway stations within a " + hubwayParameters.radius + "\n" + hubwayAnswer);
+        }
+
       });
 
       var transitSearch = new PlaceSearch(config.apiKey, config.outputFormat);
       var transitParameters = {
         location: [latitude, longitude],
         types: "transit_station",
-        radius: "1600"
+        radius: "400"
       };
 
 
     transitSearch.placeSearch(transitParameters, function (error, response) {
-        if (error) throw error;
-        assert.notEqual(response.results.length, 0, "Place search must not return 0 results");
-        var i;
-        for(i = 0; i < response.results.length; i++)
-        {
-            if (!transitAnswer.includes(response.results[i].name))
-                transitAnswer.push(response.results[i].name);
+      if (error) {
+        break; // no results found
+        //assert.notEqual(response.results.length, 0, "Place search must not return 0 results");
+      }
+      else{
+          var i;
+          for(i = 0; i < response.results.length; i++)
+          {
+              if (!transitAnswer.includes(response.results[i].name))
+                  transitAnswer.push(response.results[i].name);
+          }
+          superScore += 10;
+          console.log(transitAnswer);
         }
-        //console.log(transitAnswer);
       });
 
 
@@ -91,35 +105,47 @@ app.post("/post/sendAddressInfo", function(req,res){
     };
 
     hospitalSearch.placeSearch(hospitalParameters, function (error, response) {
-        if (error) throw error;
-        assert.notEqual(response.results.length, 0, "Place search must not return 0 results");
-        var i;
+      if (error) {
+        break; // no results found
+        //assert.notEqual(response.results.length, 0, "Place search must not return 0 results");
+      }
+      else{
+          var i;
 
-        for(i = 0; i < response.results.length; i++)
-        {
-            if (!hospitalAnswer.includes(response.results[i].name))
-                hospitalAnswer.push(response.results[i].name);
+          for(i = 0; i < response.results.length; i++)
+          {
+              if (!hospitalAnswer.includes(response.results[i].name))
+                  hospitalAnswer.push(response.results[i].name);
+          }
+          superScore += 10;
+          //console.log(hospitalAnswer);
         }
-        //console.log(hospitalAnswer);
+
     });
 
     var gymSearch = new PlaceSearch(config.apiKey, config.outputFormat);
     var gymParameters = {
         location: [latitude, longitude],
         types: "gym",
-        radius: "1600"
+        radius: "1000"
     };
     gymSearch.placeSearch(gymParameters, function (error, response) {
-        if (error) throw error;
-        assert.notEqual(response.results.length, 0, "Place search must not return 0 results");
-        var i;
-        var gymAnswer = [];
-        for(i = 0; i < response.results.length; i++)
-        {
-            if (!gymAnswer.includes(response.results[i].name))
-                gymAnswer.push(response.results[i].name);
+      if (error) {
+        break; // no results found
+        //assert.notEqual(response.results.length, 0, "Place search must not return 0 results");
+      }
+      else{
+          var i;
+          var gymAnswer = [];
+          for(i = 0; i < response.results.length; i++)
+          {
+              if (!gymAnswer.includes(response.results[i].name))
+                  gymAnswer.push(response.results[i].name);
+          }
+          superScore += 5;
+          //console.log(gymAnswer);
         }
-        //console.log(gymAnswer);
+
     });
 
 
@@ -130,15 +156,21 @@ app.post("/post/sendAddressInfo", function(req,res){
         radius: "1600"
     };
     schoolSearch.placeSearch(schoolParameters, function (error, response) {
-        if (error) throw error;
-        assert.notEqual(response.results.length, 0, "Place search must not return 0 results");
-        var i;
-        for(i = 0; i < response.results.length; i++)
-        {
-            if (!schoolAnswer.includes(response.results[i].rating, response.results[i].name))
-                schoolAnswer.push(response.results[i].rating, response.results[i].name);
+      if (error) {
+        break; // no results found
+        //assert.notEqual(response.results.length, 0, "Place search must not return 0 results");
+      }
+      else{
+          var i;
+          for(i = 0; i < response.results.length; i++)
+          {
+              if (!schoolAnswer.includes(response.results[i].rating, response.results[i].name))
+                  schoolAnswer.push(response.results[i].rating, response.results[i].name);
+          }
+          superScore += 15;
+          //console.log(schoolAnswer);
         }
-        //console.log(schoolAnswer);
+
     });
 }
   var addressArray = rawAddressString.split(" "); //split up addressArray
@@ -171,22 +203,26 @@ app.post("/post/sendAddressInfo", function(req,res){
 
     finalResponse.quietValue = Math.round(result.totalHomeScores.quiet.value);
     finalResponse.safetyValue = Math.round(result.totalHomeScores.safety.value);
-
+    superScore += (finalResponse.safetyValue * 0.5);
     var quietFactors = result.totalHomeScores.quiet.factors;
     var safetyFactors = result.totalHomeScores.safety.factors;
     if(quietFactors.cycleway){
+      superScore += 5;
       noiseReport.push("Designated bicycle paths exist here");
     }
     if(quietFactors.light_rail || quietFactors.tram){
       noiseReport.push("The T runs close to here");
     }
     if(quietFactors.motorway || quietFactors.primary){
+      superScore -= 3;
       noiseReport.push("A major road or highway runs close to here");
     }
     if(quietFactors.rail){
+      superScore -= 1;
       noiseReport.push("The commuter rail runs close to here");
     }
     if(safetyFactors.accel || safetyFactors.speed){
+      superScore -= 5;
       safetyReport.push("There have been reports of above average speeding in this area");
     }
     finalResponse.noiseReport = noiseReport;
@@ -196,7 +232,8 @@ app.post("/post/sendAddressInfo", function(req,res){
     finalResponse.transitStations = transitAnswer;
     finalResponse.hospitals = hospitalAnswer;
     finalResponse.schools = schoolAnswer;
-
+    finalResponse.superScore = superScore;
+    console.log("Super score finally is " + superScore);
     res.json(finalResponse);
   })
 });

@@ -18,6 +18,7 @@ angular.module('myApp',[]).controller('main',['$scope','$http', function($scope,
       $scope.transitStations = result.trainStations;
       $scope.hospitals = result.hospitals;
       $scope.schools = result.schools;
+      $scope.superScore = result.superScore;
     })
 
   };

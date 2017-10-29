@@ -1,0 +1,1 @@
+We got the safety scores, noise pollution factors, quiet scores, relative disturbance of major roadways, traffic violations in that area, cycling and pedestrian walkways accessibility, and other vital stats from the API to build our neighborhood overview report to outline the quality of life in a specific area. 
