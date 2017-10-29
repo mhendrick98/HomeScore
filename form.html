@@ -1,0 +1,68 @@
+<html lang="en" ng-app="myApp">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title> Neighborhood Score </title>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+    <link rel="stylesheet" href="/public/styles.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.6/angular.min.js"></script>
+    <script src="/public/mainController.js"></script>
+    <!-- Custom styles for this template -->
+  </head>
+
+  <body ng-controller="main">
+    <div class="container">
+      <div id="header">
+      </br>
+    </br>
+      <h1>What's your home's score?</h1>
+        <p class="lead">Fill out the form below to get started.</p>
+        <form ng-submit="submit()" class="form-inline">
+        <div class="form-group">
+          <input type="text" class="form-control input-group" ng-model="address" name="address" placeholder="Enter your address here (House number, Street, City, State, Zip-code)" size="90%"/>
+        </div>
+
+      <div class="form-group">
+        <input type="submit" class="btn btn-primary btn-md" value="Submit">
+      </div>
+    </form>
+  </div>
+
+      <div id="report"> <!--ng-if="showReport" !-->
+        <div class="row">
+          <div class="col-md-6">
+            <h4> Your Home's noise pollution score is  {{ quietValue }} /100</h2>
+            <h4> Your Home's safety score is {{ safetyValue }} / 100</h2>
+          </div>
+          <div class="col-md-6">
+            <h3> Additional Concerns </h3>
+            <div ng-repeat="concern in noiseReport">
+              <h4> {{ concern }} </h4>
+            </div>
+            <div ng-repeat="concern in safetyReport">
+              <h4> {{ concern }} </h4>
+            </div>
+          </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6">
+        <h3> Hubway Stations </h3>
+        <div ng-repeat="station in hubwayStations">
+          <h4> {{ station }} </h4>
+        </div>
+      </div>
+      
+  </body>
+        <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+
+</html>

@@ -1,0 +1,11 @@
+{
+  "name": "home_score",
+  "version": "1.0.0",
+  "description": "Get information about the neighborhood home is located in",
+  "main": "homeScore.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
