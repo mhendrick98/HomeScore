@@ -23,26 +23,22 @@
       <h1>What's your neighborhood score?</h1>
         <p class="lead">Enter an address to get detailed information about the quality of life in your neighborhood</p>
         <div class="row">
+          <div class="col-md-12">
         <form ng-submit="submit()" class="form">
-          <div class="col-md-3">
-          </div>
-        <div class="col-md-6">
         <div class="form-group">
           <input type="text" class="form-control input-group" ng-model="address" name="address" placeholder="Enter your address here. Must be a Boston MA address. Please do not use commas." size="90%" required/>
         </div>
-      </div>
 
       <div class="form-group">
         <input type="submit" class="btn btn-primary btn-md" value="Submit">
       </div>
-      <div class="col-md-3">
-      </div>
     </form>
+  </div>
   </div>
   <h6> Powered by Liberty Mutual Data   <img src="https://images.contentful.com/r6ek15msiuv1/2O3qSSB9tSIm2w8yYCgyk2/cafba0690104c23a00fa53490819aee2/liberty-mutual-1.png"></h6>
   </div>
 
-  <h5 id = "superScore"> Your SuperScore value for {{ addressQuery }} </br> is {{ superScore }} /100 </br> <h8> Find Your Score Report Below!</h8></h5>
+  <h5 id = "superScore"> Your SuperScore for {{ addressQuery }} </br> is {{ superScore }} /100 </br> <h8> Find Your Score Report Below!</h8></h5>
       <div id="report"> <!--ng-if="showReport" !-->
         <div class="row">
           <div class="col-md-6">
