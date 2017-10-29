@@ -166,11 +166,10 @@ googleMapsClient.geocode({
         var schoolAnswer = [];
         for(i = 0; i < response.results.length; i++)
         {
-            if (!schoolAnswer.includes(response.results[i].name))
-                schoolAnswer.push(response.results[i].name);
+            if (!schoolAnswer.includes(response.results[i].rating, response.results[i].name))
+                schoolAnswer.push(response.results[i].rating, response.results[i].name);
         }
         console.log(schoolAnswer);
-    });
-
+    }); 
 
 })();
