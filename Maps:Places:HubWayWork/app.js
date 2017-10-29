@@ -71,24 +71,106 @@ googleMapsClient.geocode({
     var PlaceSearch = require("googleplaces");
     var config = require("./config.js");
 
-    var placeSearch = new PlaceSearch(config.apiKey, config.outputFormat);
+    var hubwaySearch = new PlaceSearch(config.apiKey, config.outputFormat);
 
-    var parameters = {
+    var hubwayParameters = {
+        location: [42.350309, -71.097017],
+        keyword: "hubway",
+        radius: "1600"
+    };
+    hubwaySearch.placeSearch(hubwayParameters, function (error, response) {
+        if (error) throw error;
+        assert.notEqual(response.results.length, 0, "Place search must not return 0 results");
+        var i;
+        var hubwayAnswer = [];
+        for(i = 0; i < response.results.length; i++)
+        {
+            if (!hubwayAnswer.includes(response.results[i].name))
+                hubwayAnswer.push(response.results[i].name);
+        }
+        console.log(hubwayAnswer);
+    });
+
+    var transitSearch = new PlaceSearch(config.apiKey, config.outputFormat);
+
+    var transitParameters = {
         location: [42.350309, -71.097017],
         types: "transit_station",
         radius: "1600"
     };
-    placeSearch.placeSearch(parameters, function (error, response) {
+    transitSearch.placeSearch(transitParameters, function (error, response) {
         if (error) throw error;
         assert.notEqual(response.results.length, 0, "Place search must not return 0 results");
         var i;
-        var answer = [];
+        var transitAnswer = [];
         for(i = 0; i < response.results.length; i++)
         {
-            if (!answer.includes(response.results[i].name))
-            answer.push(response.results[i].name);
+            if (!transitAnswer.includes(response.results[i].name))
+                transitAnswer.push(response.results[i].name);
         }
-        console.log(answer);
+        console.log(transitAnswer);
     });
+
+    var hospitalSearch = new PlaceSearch(config.apiKey, config.outputFormat);
+
+    var hospitalParameters = {
+        location: [42.350309, -71.097017],
+        keyword: "hospital",
+        radius: "1600"
+    };
+    hospitalSearch.placeSearch(hospitalParameters, function (error, response) {
+        if (error) throw error;
+        assert.notEqual(response.results.length, 0, "Place search must not return 0 results");
+        var i;
+        var hospitalAnswer = [];
+        for(i = 0; i < response.results.length; i++)
+        {
+            if (!hospitalAnswer.includes(response.results[i].name))
+                hospitalAnswer.push(response.results[i].name);
+        }
+        console.log(hospitalAnswer);
+    });
+
+    var gymSearch = new PlaceSearch(config.apiKey, config.outputFormat);
+
+    var gymParameters = {
+        location: [42.350309, -71.097017],
+        types: "gym",
+        radius: "1600"
+    };
+    gymSearch.placeSearch(gymParameters, function (error, response) {
+        if (error) throw error;
+        assert.notEqual(response.results.length, 0, "Place search must not return 0 results");
+        var i;
+        var gymAnswer = [];
+        for(i = 0; i < response.results.length; i++)
+        {
+            if (!gymAnswer.includes(response.results[i].name))
+                gymAnswer.push(response.results[i].name);
+        }
+        console.log(gymAnswer);
+    });
+
+
+    var schoolSearch = new PlaceSearch(config.apiKey, config.outputFormat);
+
+    var schoolParameters = {
+        location: [42.350309, -71.097017],
+        types: "school",
+        radius: "1600"
+    };
+    schoolSearch.placeSearch(schoolParameters, function (error, response) {
+        if (error) throw error;
+        assert.notEqual(response.results.length, 0, "Place search must not return 0 results");
+        var i;
+        var schoolAnswer = [];
+        for(i = 0; i < response.results.length; i++)
+        {
+            if (!schoolAnswer.includes(response.results[i].name))
+                schoolAnswer.push(response.results[i].name);
+        }
+        console.log(schoolAnswer);
+    });
+
 
 })();
