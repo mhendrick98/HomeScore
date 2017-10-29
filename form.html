@@ -20,23 +20,29 @@
       <div id="header">
       </br>
     </br>
-      <h1>What's your home's score?</h1>
-        <p class="lead">Fill out the form below to get started.</p>
-        <form ng-submit="submit()" class="form-inline">
+      <h1>What's your neighborhood score?</h1>
+        <p class="lead">Enter an address to get detailed information about the quality of life in your neighborhood</p>
+        <div class="row">
+        <form ng-submit="submit()" class="form">
+          <div class="col-md-3">
+          </div>
+        <div class="col-md-6">
         <div class="form-group">
           <input type="text" class="form-control input-group" ng-model="address" name="address" placeholder="Enter your address here. Must be a Boston MA address. Please do not use commas." size="90%" required/>
         </div>
+      </div>
 
       <div class="form-group">
         <input type="submit" class="btn btn-primary btn-md" value="Submit">
       </div>
+      <div class="col-md-3">
+      </div>
     </form>
-        <div>
-          <h6> Powered by Liberty Mutual Data   <img src="https://images.contentful.com/r6ek15msiuv1/2O3qSSB9tSIm2w8yYCgyk2/cafba0690104c23a00fa53490819aee2/liberty-mutual-1.png">
-          </h6>
-        </div>
   </div>
-      <h5 id = "superScore"> Your SuperScore value for {{ addressQuery }} </br> is {{ superScore }} /100 </br> <h8> Find Your Score Report Below!</h8></h5>
+  <h6> Powered by Liberty Mutual Data   <img src="https://images.contentful.com/r6ek15msiuv1/2O3qSSB9tSIm2w8yYCgyk2/cafba0690104c23a00fa53490819aee2/liberty-mutual-1.png"></h6>
+  </div>
+
+  <h5 id = "superScore"> Your SuperScore value for {{ addressQuery }} </br> is {{ superScore }} /100 </br> <h8> Find Your Score Report Below!</h8></h5>
       <div id="report"> <!--ng-if="showReport" !-->
         <div class="row">
           <div class="col-md-6">
@@ -63,7 +69,6 @@
         <h9> Nearby Hubway Stations promote sustainability and an active lifestyle, two things known to improve overall quality of life.</h9>
         <div ng-repeat="station in hubwayStations">
           <h4> {{ station }} </h4>
-          <h4 ng-if="hubwayStations === []"> No bike sharing stations found. Please try again </h4>
         </div>
         </div>
       <div class="col-md-6">
@@ -71,7 +76,6 @@
         <h9> Ease of access to public transportation allows residents to save money on gas and other vehicle fees.</h9>
         <div ng-repeat="station in transitStations">
           <h4> {{ station }} </h4>
-          <h4 ng-if="transitStations === []"> No nearby transit stations found. Please try again </h4>
         </div>
       </div>
       <div class="col-md-6">
@@ -79,7 +83,6 @@
         <h9> Local hospitals give residents a sense of security and trust in their community.</h9>
         <div ng-repeat="hospital in hospitals">
           <h4> {{ hospital }} </h4>
-          <h4 ng-if="hospitals === []"> No nearby hospitals found. Please try again</h4>
         </div>
       </div>
       <div class="col-md-6">
@@ -87,7 +90,6 @@
         <h9> Living near schools with higher rankings boosts neighborhood scores. </h9>
         <div ng-repeat="school in schools" ng-if="$odd">
           <h4> {{ school }} </h4>
-          <h4 ng-if="schools === []"> No nearby schools found. Please try again </h4>
         </div>
       </div>
       </div>
